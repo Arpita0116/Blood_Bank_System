@@ -2,7 +2,7 @@ let express = require('express')
 let app = express()
 let dotenv = require('dotenv')
 let cors = require('cors')
-let colors = require('colors')
+//let colors = require('colors')
 let morgan = require('morgan')
 const databaseConnection = require('./config/db')
 const route = require('./routes/auth')
@@ -17,5 +17,5 @@ app.use('/auth/v1', route)
 app.use('/inventory/v1', inventoryRoute)
 let PORT = process.env.PORT || 5000
 app.listen(PORT, () => {
-    console.log(`Server is Running At ${PORT}`.bgGreen.white);
+    console.log(`Server is Running At ${PORT}`);
 })
