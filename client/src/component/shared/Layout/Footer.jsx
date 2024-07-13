@@ -3,15 +3,16 @@ import React from 'react'
 const Footer = () => {
     return (
         <>
-            <footer className="footer">
-                <div className='container'>
-                    <span className='text'>
-                        <a href="#" className="text">Link 1</a>
-                        <a href="#" className="text">Link 2</a>
-                        <a href="#" className="text">Link 3</a>
+            <footer className="footer bg-bark text-white py-4">
+                <div classname="container text-center">
+                    <span classname="text-white">
+                        <a href="#" classname="text-white me-3">Link 1</a>
+                        <a href="#" classname="text-white me-3">Link 2</a>
+                        <a href="#" classname="text-white me-3">Link 3</a>
                     </span>
-                    <p className='mb-0 mt-2'>&copy; 2024 Arpita. All Rights reserved.</p>
+                    <p classname="mb-0 mt-2">© 2024 Arpita. All Rights reserved.</p>
                 </div>
+
             </footer>
         </>
     )

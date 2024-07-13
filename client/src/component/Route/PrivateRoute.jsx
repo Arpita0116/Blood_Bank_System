@@ -9,7 +9,7 @@ function PrivateRoute({ childern }) {
         try {
             let res = await API.get('/auth/v1/current-user')
             if (res.data) {
-                store.dispatch(getCurrentUser(res.data))
+                store.dispatch(getCurrentUser(res))
             }
         }
         catch (error) {
@@ -25,7 +25,7 @@ function PrivateRoute({ childern }) {
         return childern
     }
     else {
-        <Navigate to='/login' />
+        <Navigate to="/login" />
     }
 }
 export default PrivateRoute

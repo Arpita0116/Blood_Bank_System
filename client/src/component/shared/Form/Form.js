@@ -15,7 +15,9 @@ function Form({ submitText, formTitle, formType }) {
 
     function formSubmitHandler(e) {
         if (formType === "login") return handleLoginController(e, email, password, role)
-        else if (formType === "register") return handleRegistrationController(e, email, password, name, role, phone, address, hospitalName, organizationName)
+
+        else if (formType === "register") return handleRegistrationController(
+            e, email, password, name, role, phone, address, hospitalName, organizationName)
 
 
     }
@@ -25,7 +27,7 @@ function Form({ submitText, formTitle, formType }) {
             <form>
                 <h3>{formTitle}</h3>
                 <hr />
-                {JSON.stringify(role, null, 4)}
+                {/* {JSON.stringify(role, null, 4)} */}
                 <div>
                     <div className='form-check form-check-inline'>
                         <input className='from-check-input' type='radio' name="role" id='donar' value="donar" defaultChecked
@@ -86,8 +88,16 @@ function Form({ submitText, formTitle, formType }) {
                         }
                     }
                 })()}
-                {formType === "login" && <> Not registered yet ? Register <NavLink to="/register">Here !</NavLink></>}
-                {formType === "register" && <> Not registered yet ? Login <NavLink to="/login">Here !</NavLink></>}
+                {formType === "login" &&
+                    <>
+                        Not registered yet ? Register <NavLink to="/register">Here !</NavLink>
+                    </>
+                }
+                {formType === "register" &&
+                    <>
+                        Not registered yet ? Login <NavLink to="/login">Here !</NavLink>
+                    </>
+                }
 
                 <button type='submit' className='btn btn-primary' onClick={formSubmitHandler}>{submitText}</button>
             </form>

@@ -1,6 +1,5 @@
 import React, { lazy, Suspense } from 'react'
 import './Login.css'
-// import { useSelectore } from 'react-redux'
 import { useSelector } from 'react-redux'
 import Spinner from '../../component/Spinner'
 import { toast } from 'react-toastify'
@@ -18,7 +17,7 @@ function Login() {
 
                 <div className='row g-0'>
                     <div className='col-md-5'>
-                        <img src='./assest/BloodBank.jpg' alt='Blood Bank Login' className='img-fluid login-image' />
+                        <img src='./assest/Bloodlogin.jpg' alt='Blood Bank Login' className='login-image' />
                     </div>
                     <div className='col-md-6 form-container'>
                         <Suspense fallback={<div>Loading.....</div>}>

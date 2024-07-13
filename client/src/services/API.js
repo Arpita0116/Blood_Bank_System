@@ -5,7 +5,7 @@ let API = axios.create({
 
 API.interceptors.request.use((req) => {
     if (localStorage.getItem('blood-token')) {
-        req.headers.Authorization = `Bearer ${localStorage.getItem('blood-token')}`
+        req.headers.Authorization = `${localStorage.getItem('blood-token')}`
     }
     return req
 }
