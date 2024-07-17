@@ -13,14 +13,25 @@ function Header() {
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container-fluid">
-                <Link className="navbar-brand" to="/">Blood-Bank</Link>
-                <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <Link className="navbar-brand" to="/">
+                    Blood-Bank
+                </Link>
+                <button className="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#navbarNav"
+                    aria-controls="navbarNav"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation">
+
                     <span className="navbar-toggler-icon" />
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNav">
                     <ul className="navbar-nav m-auto">
                         <li className="nav-item d-flex">
-                            <NavLink className="nav-link active mx-3" aria-current="page">{user?.name || user?.hospitalName || user?.organizationName}</NavLink>
+                            <NavLink className="nav-link active mx-3"
+                                aria-current="page">
+                                {user?.name || user?.hospitalName || user?.organizationName}</NavLink>
                             <h6><span className='badge bg-secondary'>{user?.role}</span></h6>
                         </li>
 

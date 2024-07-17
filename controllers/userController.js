@@ -77,17 +77,17 @@ let getCurrentUserController = async (req, res, next) => {
         let userId = req.userId
         let user = await userModel.findOne({ _id: userId })
         res.status(200).send({
-            message: "User Get Succes",
+            message: "User Get Succesfully",
             success: true,
             user
         })
     }
-    catch (err) {
-        console.log(err)
+    catch (error) {
+        console.log(error)
         res.status(500).send({
             message: "Something went wrong,while fetching current user",
             success: false,
-            err
+            error
         })
 
     }
