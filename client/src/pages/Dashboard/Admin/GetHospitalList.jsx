@@ -1,44 +1,43 @@
 import React, { useEffect, useState } from 'react'
 import API from '../../../services/API'
-import moment from 'moment'
 import { toast } from 'react-toastify'
+import moment from 'moment'
 
-function GetOrgList() {
+function GetHospital() {
     let [data, setData] = useState([])
     async function getData() {
         try {
-            let { data } = await API.get("/admin/v1/get-organization-list")
-            setData(data.organization)
+            let { data } = await API.get("/admin/v1/get-hospital-list")
+            setData(data.hospitals)
         }
         catch (e) {
             console.log(e);
         }
     }
 
-
     async function deleteHandler(id) {
         try {
-            let { data } = await API.delete(`/admin/v1/admin-delete/${id}`)
+            let { data } = await API.delete(`/admin/v1/delete-hospital/${id}`)
             if (data.success) {
                 toast.success("data deleted successfully")
                 window.location.reload()
             }
             else {
-                toast.danger("something worng")
+                toast.danger("something wrong")
                 window.location.reload()
             }
         }
         catch (e) {
-            console.log("something wrong");
+            console.log("something worng");
         }
     }
+
     useEffect(() => {
         getData()
     }, [])
-
     return (
         <>
-            <div className='container'>
+            <div className="container mt-3">
                 <div className='row'>
                     <div className='col'>
                         <table className='table'>
@@ -56,21 +55,15 @@ function GetOrgList() {
                                     data.map((item, i) => {
                                         return (
                                             <tr key={i}>
-                                                <td>{item?.name || item?.organization + "(ORG)"}</td>
+                                                <td>{item?.name || item?.hospitalName}</td>
                                                 <td>{item?.email}</td>
                                                 <td>{item?.phone}</td>
+                                                <td>{moment(item.createdAt).startOf("hour").fromNow()}</td>
                                                 <td>
-                                                    {moment(item?.createdAt).startOf("hour").fromNow()}
+                                                    <button className='btn  btn-primary'>Edit</button>
                                                 </td>
                                                 <td>
-                                                    <button className='btn btn-primary'>
-                                                        Edit
-                                                    </button>
-                                                </td>
-                                                <td>
-                                                    <button className='btn btn-danger' onClick={() => {
-                                                        deleteHandler(item._id)
-                                                    }}>
+                                                    <button className='btn btn-danger' onClick={() => deleteHandler(item._id)}>
                                                         Delete
                                                     </button>
                                                 </td>
@@ -81,9 +74,10 @@ function GetOrgList() {
                         </table>
                     </div>
                 </div>
+
             </div>
         </>
     )
 }
 
-export default GetOrgList
+export default GetHospital

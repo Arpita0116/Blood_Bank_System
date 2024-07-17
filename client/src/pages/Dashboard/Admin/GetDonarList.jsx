@@ -1,20 +1,19 @@
 import React, { useEffect, useState } from 'react'
 import API from '../../../services/API'
+import toast from 'react-toastify'
 import moment from 'moment'
-import { toast } from 'react-toastify'
 
-function GetOrgList() {
+function GetDonarList() {
     let [data, setData] = useState([])
-    async function getData() {
+    async function getDonar() {
         try {
-            let { data } = await API.get("/admin/v1/get-organization-list")
-            setData(data.organization)
+            let { data } = await API.get("/admin/v1/get-donar-list")
+            setData(data.donars)
         }
         catch (e) {
-            console.log(e);
+            console.log(e)
         }
     }
-
 
     async function deleteHandler(id) {
         try {
@@ -32,13 +31,14 @@ function GetOrgList() {
             console.log("something wrong");
         }
     }
+
     useEffect(() => {
-        getData()
+        getDonar()
     }, [])
 
     return (
         <>
-            <div className='container'>
+            <div className='container mt-3'>
                 <div className='row'>
                     <div className='col'>
                         <table className='table'>
@@ -56,12 +56,10 @@ function GetOrgList() {
                                     data.map((item, i) => {
                                         return (
                                             <tr key={i}>
-                                                <td>{item?.name || item?.organization + "(ORG)"}</td>
+                                                <td>{item?.name || item?.organizatioName + "(ORG)"}</td>
                                                 <td>{item?.email}</td>
                                                 <td>{item?.phone}</td>
-                                                <td>
-                                                    {moment(item?.createdAt).startOf("hour").fromNow()}
-                                                </td>
+                                                <td>{moment(item?.createdAt).startOf("hour").fromNow()}</td>
                                                 <td>
                                                     <button className='btn btn-primary'>
                                                         Edit
@@ -69,7 +67,7 @@ function GetOrgList() {
                                                 </td>
                                                 <td>
                                                     <button className='btn btn-danger' onClick={() => {
-                                                        deleteHandler(item._id)
+                                                        deleteHandler(item.id)
                                                     }}>
                                                         Delete
                                                     </button>
@@ -79,6 +77,7 @@ function GetOrgList() {
                                     })}
                             </tbody>
                         </table>
+
                     </div>
                 </div>
             </div>
@@ -86,4 +85,4 @@ function GetOrgList() {
     )
 }
 
-export default GetOrgList
+export default GetDonarList

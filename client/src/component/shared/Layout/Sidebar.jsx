@@ -44,8 +44,14 @@ function Sidebar() {
 
 
             {/* Admin */}
-            {user?.role == "admin" &&
+            {user?.role == "admin" && (
                 <>
+                    <div className={location.pathname === "/" && "navbarActive"}>
+                        <i className={` fa-solid fa-building-ngo  custom-icon`}></i>
+                        <NavLink to="/" className={"nav-style"}>
+                            Home
+                        </NavLink>
+                    </div>
                     <div className={location.pathname === "/donar-list" && "navbarActive"}>
                         <i className={` fa-solid fa-building-ngo  custom-icon`}></i>
                         <NavLink to="/donar-list" className={"nav-style"}>
@@ -67,7 +73,36 @@ function Sidebar() {
                         </NavLink>
                     </div>
                 </>
-            }
+            )}
+
+            {/* organization */}
+            {user.role == "organization" && (
+                <>
+                    {/* Inventory */}
+                    <div className={location.pathname === "/" && "navbarActive"}>
+                        <i className={`fa-solid fa-boxes-stacked custom-icon`}></i>
+                        <NavLink to="/" className={"nav-style"}>
+                            Inventory
+                        </NavLink>
+                    </div>
+
+                    {/* Donar */}
+                    <div className={location.pathname === "/donar" && "navbarActive"}>
+                        <i className={`fa-solid fa-hand-holding-medical custom-icon `}></i>
+                        <NavLink to="/donar" className={"nav-style"}>
+                            Donar
+                        </NavLink>
+                    </div>
+
+                    {/* hospital */}
+                    <div className={location.pathname === "/hospital" && "navbarActive"}>
+                        <i className={`fa-regular fa-hospital custom-icon `}></i>
+                        <NavLink to="/donar" className={"nav-style"}>
+                            Hospital
+                        </NavLink>
+                    </div>
+                </>
+            )}
         </>
     )
 }
