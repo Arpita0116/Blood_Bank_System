@@ -17,11 +17,15 @@ function Login() {
 
                 <div className='row g-0'>
                     <div className='col-md-5'>
-                        <img src='./assest/Bloodlogin.jpg' alt='Blood Bank Login' className='login-image' />
+                        <img src='./assest/Bloodlogin.jpg'
+                            alt='Blood Bank Login'
+                            className='login-image'
+                        />
                     </div>
                     <div className='col-md-6 form-container'>
                         <Suspense fallback={<div>Loading.....</div>}>
-                            <Form role="" submitText="submit" formTitle="Login" formType="login" />
+                            <Form role="" submitText="submit" formTitle="Login"
+                                formType="login" />
                         </Suspense>
 
                     </div>

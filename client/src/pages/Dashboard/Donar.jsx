@@ -16,7 +16,7 @@ function Donar() {
     }
     useEffect(() => {
         getDonar()
-    })
+    }, [])
 
     return (
         <div className='container mt-3'>

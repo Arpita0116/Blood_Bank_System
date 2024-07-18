@@ -1,31 +1,21 @@
 import React, { useEffect, useState } from 'react'
+import API from '../../services/API';
 import moment from 'moment'
-import API from '../../services/API'
-import { useSelector } from 'react-redux'
 
-
-function Organization() {
-    let { user } = useSelector(item => item.auth)
-    let [data, setDate] = useState([])
-
-    async function getOrg() {
+function Hospital() {
+    let [data, setData] = useState([])
+    async function getDonar() {
         try {
-            if (user.role == "hospital") {
-                let { data } = await API.get('/inventory/v1/get-org-hospital')
-                setDate(data.organization)
-            }
-            if (user.role == "donar") {
-                let { data } = await API.get('/inventory/v1/get-org-doner')
-                setDate(data.organization)
-            }
+            let { data } = await API.get('/inventory/v1/get-hospital')
+            setData(data.Hospitals)
         }
         catch (e) {
             console.log(e);
         }
     }
     useEffect(() => {
-        getOrg()
-    })
+        getDonar()
+    }, [])
     return (
         <>
             <div className='container mt-3'>
@@ -37,21 +27,20 @@ function Organization() {
                                     <th scope='col'>Name</th>
                                     <th scope='col'>Email</th>
                                     <th scope='col'>Phone</th>
-                                    <th colSpan="2">Date</th>
+                                    <th scope='col'>Date</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {data.length > 0 && data.map((item, i) => {
                                     return <tr key={i}>
-                                        <td>{item?.organizationName}</td>
+                                        <td>{item?.hospitalName}</td>
                                         <td>{item?.email}</td>
                                         <td>{item?.phone}</td>
-                                        <td>{moment(item?.createdAt).startOf('hour').fromNow()}</td>
+                                        <td>{moment(item.createdAt).startOf('hour').fromNow()}</td>
                                     </tr>
                                 })}
                             </tbody>
                         </table>
-
                     </div>
                 </div>
 
@@ -60,4 +49,4 @@ function Organization() {
     )
 }
 
-export default Organization
+export default Hospital
