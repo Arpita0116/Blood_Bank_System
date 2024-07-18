@@ -1,10 +1,11 @@
 import React from 'react'
-import { Link, NavLink, useNavigate } from 'react-router-dom'
+import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
 function Header() {
     let { user } = useSelector(item => item.auth)
     let navigate = useNavigate()
+    let location = useLocation()
 
     function logoutHandler() {
         localStorage.clear('blood-token')
@@ -31,14 +32,37 @@ function Header() {
                         <li className="nav-item d-flex">
                             <NavLink className="nav-link active mx-3"
                                 aria-current="page">
-                                {user?.name || user?.hospitalName || user?.organizationName}</NavLink>
-                            <h6><span className='badge bg-secondary'>{user?.role}</span></h6>
+                                {user?.name || user?.hospitalName || user?.organizationName}
+                            </NavLink>
+                            <h6><span className='badge bg-secondary'>{user?.role}</span>
+                            </h6>
                         </li>
 
-                        <li className="nav-item mx-3">
-                            <button className="btn btn-danger" onClick={logoutHandler}>Logout</button>
+                        <li className="nav-item d-flex">
+                            {user?.role === "organization" && location.pathname == "/" && (
+                                <NavLink
+                                    className="nav-link active mx-3"
+                                    aria-current="page"
+                                    to="/analytics"
+                                >
+                                    Analytics
+                                </NavLink>
+                            )}
+                            {user?.role == "organization" && location.pathname == "/analytics" && (
+                                <NavLink
+                                    className="nav-link active mx-3"
+                                    aria-current="page"
+                                    to="/">
+                                    Home
+                                </NavLink>
+                            )}
                         </li>
 
+                        <li className='nav-item mx-3'>
+                            <button className='btn btn-danger' onClick={logoutHandler}>
+                                LOGOUT
+                            </button>
+                        </li>
                     </ul>
                 </div>
             </div>

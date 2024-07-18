@@ -18,7 +18,8 @@ function Donation() {
     }
     useEffect(() => {
         getConsumerandDonationHandler()
-    })
+    }, [user])
+
     return (
         <>
             <div className='container mt-3'>
