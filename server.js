@@ -9,6 +9,8 @@ const route = require('./routes/auth')
 const inventoryRoute = require('./routes/inventoryRoute')
 const adminRoute = require('/routes/adminRoute')
 const analyticsRoute = require('/routes/analytics')
+
+
 dotenv.config()
 app.use(express.json())
 app.use(cors())
@@ -17,8 +19,8 @@ databaseConnection()
 
 app.use('/auth/v1', route)
 app.use('/inventory/v1', inventoryRoute)
-app.use('admin/v1', adminRoute)
-app.use('analytics/v1', analyticsRoute)
+app.use('/admin/v1', adminRoute)
+app.use('/organization/v1', analyticsRoute)
 let PORT = process.env.PORT || 5000
 app.listen(PORT, () => {
     console.log(`Server is Running At ${PORT}`);

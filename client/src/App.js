@@ -24,12 +24,27 @@ function App() {
     <>
       <ToastContainer />
       <Routes>
-        <Route path='/' element={
-          <PrivatRoute>
-            <HomePage />
-            <Laylout />
-          </PrivatRoute>
-        } />
+        <Route path='/'
+          element={
+            <PrivatRoute>
+              <Laylout >
+                <HomePage />
+              </Laylout>
+            </PrivatRoute>
+          }
+        />
+
+
+        <Route
+          path='/analytics'
+          element={
+            <PrivatRoute>
+              <Analytics />
+            </PrivatRoute>
+          }
+        />
+
+
 
         <Route
           path='/donar-list'
@@ -42,16 +57,102 @@ function App() {
           }
         />
 
-        <Route path='/login' element={
-          <PublicRoute>
-            <Login />
-          </PublicRoute>
-        } />
-        <Route path='/register' element={
-          <PublicRoute>
-            <Register />
-          </PublicRoute>
-        } />
+        <Route
+          path='/org-list'
+          element={
+            <PrivatRoute>
+              <Laylout>
+                <GetOrgList />
+              </Laylout>
+            </PrivatRoute>
+          }
+        />
+
+
+        <Route
+          path='/hospital-list'
+          element={
+            <PrivatRoute>
+              <Laylout>
+                <GetHospitalList />
+              </Laylout>
+            </PrivatRoute>
+          }
+        />
+
+        <Route
+          path='/donation'
+          element={
+            <PrivatRoute>
+              <Laylout>
+                <Donation />
+              </Laylout>
+            </PrivatRoute>
+          }
+        />
+
+
+        <Route
+          path='/consumer'
+          element={
+            <PrivatRoute>
+              <Laylout>
+                <Consumer />
+              </Laylout>
+            </PrivatRoute>
+          }
+        />
+
+
+        <Route
+          path='/organization'
+          element={
+            <PrivatRoute>
+              <Laylout>
+                <Organization />
+              </Laylout>
+            </PrivatRoute>
+          }
+        />
+
+        <Route
+          path='/donar'
+          element={
+            <PrivatRoute>
+              <Laylout>
+                <Donar />
+              </Laylout>
+            </PrivatRoute>
+          }
+        />
+
+        <Route
+          path='/hospital'
+          element={
+            <PrivatRoute>
+              <Laylout>
+                <Hospitals />
+              </Laylout>
+            </PrivatRoute>
+          }
+        />
+
+
+        <Route path='/login'
+          element={
+            <PublicRoute>
+              <Login />
+            </PublicRoute>
+          } />
+
+        <Route path='/register'
+          element={
+            <PublicRoute>
+              <Register />
+            </PublicRoute>
+          }
+        />
+
       </Routes>
     </>
   )

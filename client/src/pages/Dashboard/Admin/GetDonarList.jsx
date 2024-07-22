@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import API from '../../../services/API'
-import toast from 'react-toastify'
+import { toast } from 'react-toastify'
 import moment from 'moment'
 
 function GetDonarList() {
