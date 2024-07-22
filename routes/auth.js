@@ -2,7 +2,6 @@ let express = require('express')
 
 const { registerController, loginController, getCurrentUserController } = require('../controllers/userController')
 
-const auhtorizeUser = require('../middleware/authMiddleware')
 const authorizeUser = require('../middleware/authMiddleware')
 
 let route = express.Router()

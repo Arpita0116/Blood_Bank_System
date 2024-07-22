@@ -5,13 +5,18 @@ let inventorySchema = new mongoose.Schema({
         required: [true, 'Inventory type is required*'],
         enum: ['in', 'out']
     },
+    email: {
+        type: String,
+        required: [true, ' email is required']
+    },
+
     bloodGroup: {
         type: String,
         required: [true, 'Blood group is required*'],
         enum: ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-']
     },
     quantity: {
-        type: String,
+        type: Number,
         required: [true, 'Blood Quantity is required*']
     },
     organization: {
@@ -29,9 +34,9 @@ let inventorySchema = new mongoose.Schema({
     donar: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'users',
-        // required: function () {
-        //     return this.inventoryType === 'in'
-        // }
+        required: function () {
+            return this.inventoryType === 'in'
+        }
     }
 }, { timestamps: true })
 module.exports = mongoose.model('inventory', inventorySchema)
